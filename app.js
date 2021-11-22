@@ -8,6 +8,7 @@ let books = JSON.parse(localStorage.getItem('booksDetails')) || [];
 console.log(books);
 
 const addBook = (title, author, id) => {
+  if(title && author){
   books.push({
     title,
     author,
@@ -15,7 +16,7 @@ const addBook = (title, author, id) => {
   });
   localStorage.setItem('booksDetails', JSON.stringify(books));
   return { title, author, id };
-};
+}};
 
 const createBook = ({ title, author, id }) => {
   const div = document.createElement('div');
@@ -24,8 +25,8 @@ const createBook = ({ title, author, id }) => {
   const button = document.createElement('button');
 
   div.className = 'book-div';
-  h3.innerText = title;
-  h4.innerText = author;
+  h3.innerText = 'Title'+ " " +title;
+  h4.innerText = 'Author'+ " " +author;
   button.innerHTML = 'remove';
   button.dataset.id = id;
   button.type = 'button';
