@@ -1,22 +1,22 @@
 const formContainer = document.getElementById('formContainer');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
-const addbtn = document.getElementById('add');
 const dynamicBooksDiv = document.getElementById('books-wrapper');
 
-let books = JSON.parse(localStorage.getItem('booksDetails')) || [];
-console.log(books);
+const books = JSON.parse(localStorage.getItem('booksDetails')) || [];
 
 const addBook = (title, author, id) => {
-  if(title && author){
-  books.push({
-    title,
-    author,
-    id,
-  });
-  localStorage.setItem('booksDetails', JSON.stringify(books));
-  return { title, author, id };
-}};
+  if (title && author) {
+    books.push({
+      title,
+      author,
+      id,
+    });
+    localStorage.setItem('booksDetails', JSON.stringify(books));
+    return { title, author, id };
+  }
+  return null;
+};
 
 const createBook = ({ title, author, id }) => {
   const div = document.createElement('div');
@@ -25,8 +25,8 @@ const createBook = ({ title, author, id }) => {
   const button = document.createElement('button');
 
   div.className = 'book-div';
-  h3.innerText = 'Title'+ " " +title;
-  h4.innerText = 'Author'+ " " +author;
+  h3.innerText = `Title   ${title}`;
+  h4.innerText = `Author   ${author}`;
   button.innerHTML = 'remove';
   button.dataset.id = id;
   button.type = 'button';
@@ -45,6 +45,7 @@ formContainer.onsubmit = (e) => {
     .substring(1);
   const newBook = addBook(bookTitle.value, bookAuthor.value, id);
   createBook(newBook);
+  // eslint-disable-next-line no-restricted-globals
   location.reload();
   bookTitle.value = '';
   bookAuthor.value = '';
@@ -52,33 +53,20 @@ formContainer.onsubmit = (e) => {
 };
 
 const deleteBook = (id) => {
-  books.filter((book, index) => {
+  books.forEach((book, index) => {
     if (book.id === id) {
       return books.splice(index, 1);
     }
+    return null;
   });
-  localStorage.setItem('booksDetails', JSON.stringify(books));
+  // eslint-disable-next-line no-restricted-globals
   location.reload();
+  return localStorage.setItem('booksDetails', JSON.stringify(books));
 };
 
-<<<<<<< HEAD
-window.onload = showBooks;
-
-const removeBook = (bookId) => {
-  books = books.filter((book) => book.id !== bookId);
-};
-const rmvBtn = document.querySelector('.rmv-btn');
-dynamicBooksDiv.addEventListener('click', (r) => {
-  if (r.target.classList.contains('rmv-btn')) {
-    r.target.parentElement.remove();
-    removeBook(r.target.id);
-    localStorage.removeItem(books[0])
-  }
-=======
 document.querySelectorAll('.rmv').forEach((button) => {
   button.addEventListener('click', (e) => {
     e.preventDefault();
     deleteBook(button.dataset.id);
   });
->>>>>>> 1e5943af0fa56019b8208b910487057fd5ee8f61
 });

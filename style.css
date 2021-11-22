@@ -8,6 +8,7 @@ button {
   margin: 5px;
   padding: 4px;
 }
+
 .book-div {
   width: 30%;
   height: auto;
@@ -17,6 +18,7 @@ button {
   margin-bottom: 12px;
   gap: 7px;
 }
+
 h3 {
   font-size: 15px;
   font-family: sans-serif;
