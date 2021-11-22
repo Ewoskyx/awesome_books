@@ -1,47 +1,67 @@
-const bookTitle = document.getElementById('title');
 const formContainer = document.getElementById('formContainer');
+const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
 const addbtn = document.getElementById('add');
 const dynamicBooksDiv = document.getElementById('books-wrapper');
 
-let books = JSON.parse(localStorage.getItem('books')) || [];
+let books = JSON.parse(localStorage.getItem('booksDetails')) || [];
 console.log(books);
 
-const showBooks = () => {
-  books.map((book) => {
-    const bookTest = `
-    <div class='book-div'>
-    <h4><strong>Title:</strong> ${book.title}</h4>
-    <h4>Author: ${book.author}</h4>
-    <button type='button'  class="rmv-btn" data-delete=${book.id}>Remove</button>
-    `;
-    return dynamicBooksDiv.insertAdjacentHTML('beforeend', bookTest);
-  });
-};
-
 const addBook = (title, author, id) => {
+  if(title && author){
   books.push({
     title,
     author,
     id,
   });
-
-  localStorage.setItem('books', JSON.stringify(books));
-
+  localStorage.setItem('booksDetails', JSON.stringify(books));
   return { title, author, id };
+}};
+
+const createBook = ({ title, author, id }) => {
+  const div = document.createElement('div');
+  const h3 = document.createElement('h3');
+  const h4 = document.createElement('h4');
+  const button = document.createElement('button');
+
+  div.className = 'book-div';
+  h3.innerText = 'Title'+ " " +title;
+  h4.innerText = 'Author'+ " " +author;
+  button.innerHTML = 'remove';
+  button.dataset.id = id;
+  button.type = 'button';
+  button.className = 'rmv';
+
+  div.append(h3, h4, button);
+  dynamicBooksDiv.appendChild(div);
 };
+
+books.forEach(createBook);
 
 formContainer.onsubmit = (e) => {
-  const newBook = addBook(
-    bookTitle.value,
-    bookAuthor.value,
-    Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1),
-  );
-
+  e.preventDefault();
+  let id = Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+  const newBook = addBook(bookTitle.value, bookAuthor.value, id);
+  createBook(newBook);
+  location.reload();
+  bookTitle.value = '';
+  bookAuthor.value = '';
+  id = '';
 };
 
+const deleteBook = (id) => {
+  books.filter((book, index) => {
+    if (book.id === id) {
+      return books.splice(index, 1);
+    }
+  });
+  localStorage.setItem('booksDetails', JSON.stringify(books));
+  location.reload();
+};
+
+<<<<<<< HEAD
 window.onload = showBooks;
 
 const removeBook = (bookId) => {
@@ -54,4 +74,11 @@ dynamicBooksDiv.addEventListener('click', (r) => {
     removeBook(r.target.id);
     localStorage.removeItem(books[0])
   }
+=======
+document.querySelectorAll('.rmv').forEach((button) => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteBook(button.dataset.id);
+  });
+>>>>>>> 1e5943af0fa56019b8208b910487057fd5ee8f61
 });
