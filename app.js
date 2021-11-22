@@ -44,13 +44,14 @@ formContainer.onsubmit = (e) => {
 
 window.onload = showBooks;
 
-// const removeBook = (bookId) => {
-//   books = books.filter((book) => book.id !== bookId);
-// };
-// const rmvBtn = document.querySelector('.rmv-btn');
-// dynamicBooksDiv.addEventListener('click', (r) => {
-//   if (r.target.classList.contains('rmv-btn')) {
-//     r.target.parentElement.remove();
-//     removeBook(r.target.id);
-//   }
-// });
+const removeBook = (bookId) => {
+  books = books.filter((book) => book.id !== bookId);
+};
+const rmvBtn = document.querySelector('.rmv-btn');
+dynamicBooksDiv.addEventListener('click', (r) => {
+  if (r.target.classList.contains('rmv-btn')) {
+    r.target.parentElement.remove();
+    removeBook(r.target.id);
+    localStorage.removeItem(books[0])
+  }
+});
