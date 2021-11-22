@@ -1,0 +1,17 @@
+button {
+  height: 24px;
+  width: 62px;
+  margin: 5px;
+  padding: 4px;
+}
+.book-div {
+  border: 1px dashed black;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 12px;
+}
