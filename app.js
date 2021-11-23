@@ -1,72 +1,99 @@
-const formContainer = document.getElementById('formContainer');
+/* eslint-disable max-classes-per-file */
+
+// const formContainer = document.getElementById('formContainer');
+const dynamicBooksDiv = document.getElementById('books-wrapper');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
-const dynamicBooksDiv = document.getElementById('books-wrapper');
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+    this.id = Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+}
 
-const books = JSON.parse(localStorage.getItem('booksDetails')) || [];
+class store {
+  static getBooks() {
+    let booksList;
+    if (localStorage.getItem('booksDetails') === null) {
+      booksList = [];
+    } else {
+      booksList = JSON.parse(localStorage.getItem('booksDetails'));
+    }
+    return booksList;
+  }
 
-const addBook = (title, author, id) => {
-  if (title && author) {
-    books.push({
-      title,
-      author,
-      id,
+  static addBooks(book) {
+    const newbooksList = store.getBooks();
+    newbooksList.push(book);
+    localStorage.setItem('booksDetails', JSON.stringify(newbooksList));
+  }
+
+  static removeBooks(bookID) {
+    const books = store.getBooks();
+    books.forEach((book, index) => {
+      if (book.id === bookID) {
+        books.splice(index, 1);
+      }
     });
     localStorage.setItem('booksDetails', JSON.stringify(books));
-    return { title, author, id };
   }
-  return null;
-};
+}
 
-const createBook = ({ title, author, id }) => {
-  const div = document.createElement('div');
-  const h3 = document.createElement('h3');
-  const h4 = document.createElement('h4');
-  const button = document.createElement('button');
+class Displaying {
+  static addBooksToList(book) {
+    const div = document.createElement('div');
+    const h3 = document.createElement('h3');
+    const h4 = document.createElement('h4');
+    const button = document.createElement('button');
 
-  div.className = 'book-div';
-  h3.innerText = `Title   ${title}`;
-  h4.innerText = `Author   ${author}`;
-  button.innerHTML = 'remove';
-  button.dataset.id = id;
-  button.type = 'button';
-  button.className = 'rmv';
+    div.className = 'book-div';
+    h3.innerText = `Title   ${book.title}`;
+    h4.innerText = `Author   ${book.author}`;
+    button.innerHTML = 'remove';
+    button.id = book.id;
+    button.type = 'button';
+    button.className = 'rmv';
 
-  div.append(h3, h4, button);
-  dynamicBooksDiv.appendChild(div);
-};
+    div.append(h3, h4, button);
+    dynamicBooksDiv.appendChild(div);
+  }
 
-books.forEach(createBook);
+  static showBooks() {
+    const booksCreated = store.getBooks();
+    booksCreated.forEach((book) => Displaying.addBooksToList(book));
+  }
 
-formContainer.onsubmit = (e) => {
-  e.preventDefault();
-  let id = Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
-  const newBook = addBook(bookTitle.value, bookAuthor.value, id);
-  createBook(newBook);
-  // eslint-disable-next-line no-restricted-globals
-  location.reload();
-  bookTitle.value = '';
-  bookAuthor.value = '';
-  id = '';
-};
+  static clearInputs() {
+    bookTitle.value = '';
+    bookAuthor.value = '';
+  }
 
-const deleteBook = (id) => {
-  books.forEach((book, index) => {
-    if (book.id === id) {
-      return books.splice(index, 1);
+  static deleteBook(book) {
+    if (book.classList.contains('rmv')) {
+      book.parentElement.remove();
     }
-    return null;
-  });
-  // eslint-disable-next-line no-restricted-globals
-  location.reload();
-  return localStorage.setItem('booksDetails', JSON.stringify(books));
-};
+  }
+}
 
-document.querySelectorAll('.rmv').forEach((button) => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
-    deleteBook(button.dataset.id);
-  });
+document.addEventListener('DOMContentLoaded', Displaying.showBooks);
+
+document.querySelector('#formContainer').addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (bookTitle.value === '' || bookAuthor.value === '') {
+    Displaying.clearInputs();
+  } else {
+    const book = new Book(bookTitle.value, bookAuthor.value);
+
+    Displaying.addBooksToList(book);
+    store.addBooks(book);
+    Displaying.clearInputs();
+  }
+});
+
+document.querySelector('.books-wrapper').addEventListener('click', (e) => {
+  Displaying.deleteBook(e.target);
+  store.removeBooks(e.target.id);
 });
