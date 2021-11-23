@@ -1,26 +1,7 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-button {
-  height: 24px;
-  width: 62px;
-  margin: 5px;
-  padding: 4px;
-}
-
-.book-div {
-  width: 30%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 12px;
-  gap: 7px;
-}
-
-h3 {
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: 400;
+  font-family: 'Kalam', cursive;
+  list-style: none;
 }
