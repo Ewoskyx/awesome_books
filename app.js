@@ -50,8 +50,8 @@ class Displaying {
     const button = document.createElement('button');
 
     div.className = 'book-div';
-    h3.innerText = `Title   ${book.title}`;
-    h4.innerText = `Author   ${book.author}`;
+    h3.innerText = `Title : ${book.title}`;
+    h4.innerText = `Author :  ${book.author}`;
     button.innerHTML = 'remove';
     button.id = book.id;
     button.type = 'button';
