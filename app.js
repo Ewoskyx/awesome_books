@@ -1,6 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
-// const formContainer = document.getElementById('formContainer');
 const dynamicBooksDiv = document.getElementById('books-wrapper');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
@@ -12,9 +9,7 @@ class Book {
       .toString(16)
       .substring(1);
   }
-}
 
-class store {
   static getBooks() {
     let booksList;
     if (localStorage.getItem('booksDetails') === null) {
@@ -26,13 +21,13 @@ class store {
   }
 
   static addBooks(book) {
-    const newbooksList = store.getBooks();
+    const newbooksList = Book.getBooks();
     newbooksList.push(book);
     localStorage.setItem('booksDetails', JSON.stringify(newbooksList));
   }
 
   static removeBooks(bookID) {
-    const books = store.getBooks();
+    const books = Book.getBooks();
     books.forEach((book, index) => {
       if (book.id === bookID) {
         books.splice(index, 1);
@@ -40,9 +35,7 @@ class store {
     });
     localStorage.setItem('booksDetails', JSON.stringify(books));
   }
-}
 
-class Displaying {
   static addBooksToList(book) {
     const div = document.createElement('div');
     const h3 = document.createElement('h3');
@@ -62,8 +55,8 @@ class Displaying {
   }
 
   static showBooks() {
-    const booksCreated = store.getBooks();
-    booksCreated.forEach((book) => Displaying.addBooksToList(book));
+    const booksCreated = Book.getBooks();
+    booksCreated.forEach((book) => Book.addBooksToList(book));
   }
 
   static clearInputs() {
@@ -78,22 +71,22 @@ class Displaying {
   }
 }
 
-document.addEventListener('DOMContentLoaded', Displaying.showBooks);
+document.addEventListener('DOMContentLoaded', Book.showBooks);
 
 document.querySelector('#formContainer').addEventListener('submit', (e) => {
   e.preventDefault();
   if (bookTitle.value === '' || bookAuthor.value === '') {
-    Displaying.clearInputs();
+    Book.clearInputs();
   } else {
     const book = new Book(bookTitle.value, bookAuthor.value);
 
-    Displaying.addBooksToList(book);
-    store.addBooks(book);
-    Displaying.clearInputs();
+    Book.addBooksToList(book);
+    Book.addBooks(book);
+    Book.clearInputs();
   }
 });
 
 document.querySelector('.books-wrapper').addEventListener('click', (e) => {
-  Displaying.deleteBook(e.target);
-  store.removeBooks(e.target.id);
+  Book.deleteBook(e.target);
+  Book.removeBooks(e.target.id);
 });
