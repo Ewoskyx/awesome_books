@@ -178,6 +178,20 @@ h2 {
   padding-bottom: 50px;
 }
 
+.book-div:nth-child(odd) {
+  background: lightslategrey;
+}
+
+.book-div:nth-child(even) {
+  background: darkgray;
+}
+
+.button-container {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .footer {
   position: fixed;
   display: flex;

@@ -125,13 +125,19 @@ booklistBtn.addEventListener('click', booklistOpen);
 addbookBtn.addEventListener('click', addbookOpen);
 contactinfoBtn.addEventListener('click', contactinfoOpen);
 
-const timeDiv = document.querySelector('.time');
-const span = document.createElement('span');
+/* global luxon, luxon */
+const displayTime = () => {
+  const currentDate = luxon.DateTime.fromJSDate(new Date());
+  const date = currentDate.toLocaleString(
+    luxon.DateTime.DATETIME_MED_WITH_SECONDS,
+  );
+  document.querySelector('.time').innerHTML = date;
+};
 
-const currentdate = new Date();
-const datetime = `${currentdate.getDate()}/${
-  currentdate.getMonth() + 1
-}/${currentdate.getFullYear()}  ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
-
-span.append(datetime);
-timeDiv.appendChild(span);
+document.addEventListener('DOMContentLoaded', () => {
+  luxon.Settings.defaultLocale = 'en';
+  displayTime();
+  setInterval(() => {
+    displayTime();
+  }, 1000);
+});
