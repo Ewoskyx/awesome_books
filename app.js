@@ -90,3 +90,39 @@ document.querySelector('.books-wrapper').addEventListener('click', (e) => {
   Book.deleteBook(e.target);
   Book.removeBooks(e.target.id);
 });
+
+//styles d4
+const booklistBtn = document.getElementById('booklist');
+const addbookBtn = document.getElementById('addbook');
+const contactinfoBtn = document.getElementById('contactinfo');
+const booklistSection = document.getElementById('booklistsection');
+const header = document.getElementById('header');
+const inputSection = document.querySelector('.input-wrapper');
+const contactinfoSection = document.querySelector('.contactinfo-section');
+const booklistOpen = () => {
+  booklistSection.classList.remove('dis-none');
+  inputSection.classList.add('dis-none');
+  booklistBtn.style.backgroundColor = 'white';
+  contactinfoBtn.style.backgroundColor = 'unset';
+  addbookBtn.style.backgroundColor = 'unset';
+  contactinfoSection.classList.add('dis-none');
+}
+const addbookOpen = () => {
+  booklistSection.classList.add('dis-none');
+  inputSection.classList.remove('dis-none');
+  booklistBtn.style.backgroundColor = 'unset';
+  contactinfoBtn.style.backgroundColor = 'unset'
+  addbookBtn.style.backgroundColor = 'white';
+  contactinfoSection.classList.add('dis-none');
+}
+const contactinfoOpen = () => {
+  booklistSection.classList.add('dis-none');
+  inputSection.classList.add('dis-none');
+  booklistBtn.style.backgroundColor = 'unset';
+  contactinfoBtn.style.backgroundColor = 'white';
+  addbookBtn.style.backgroundColor = 'unset';
+  contactinfoSection.classList.remove('dis-none');
+}
+booklistBtn.addEventListener('click',booklistOpen);
+addbookBtn.addEventListener('click',addbookOpen);
+contactinfoBtn.addEventListener('click',contactinfoOpen);

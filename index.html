@@ -8,17 +8,30 @@
     <title>Awesome Books</title>
   </head>
   <body>
-    <header>
+    <header class="header" id="header">
       <div class="header-top">
         <h1 class="title1">Awesome Books</h1>
       </div>
+      <div class="nav-bar">
+        <li class="nav-bar-li" id="booklist">Book List</li>
+        <li class="nav-bar-li" id="addbook">Add book</li>
+        <li class="nav-bar-li" id="contactinfo">Contact info</li>
+      </div>
     </header>
-    <section>
-      <h2>Selected Books</h2>
+    <section class="dis-none contactinfo-section">
+      <p>
+       <span> Authors</span>: Ersoy,Reda,Didi,<br>
+       <span> Organisation</span>: microverse,<br>
+       <span> Website</span> :microverse.org, <br>
+        All rights reserved
+      </p>
+    </section>
+    <section class='dis-none' id="booklistsection">
+      <h2 class="title2">Your book list</h2>
       <div class="books-wrapper" id="books-wrapper"></div>
     </section>
     <section class="input-wrapper">
-      <h2>Insert Books</h2>
+      <h2>Insert Book</h2>
       <form id="formContainer" class="form-container">
         <input
           type="text"
