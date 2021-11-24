@@ -5,3 +5,87 @@
   font-family: 'Kalam', cursive;
   list-style: none;
 }
+
+body {
+  background-image: linear-gradient(to bottom, #04082793, #6a737a);
+  min-height: 100vh;
+  font-family: 'Libre Baskerville', serif;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  margin: 40px 0;
+  text-align: center;
+  z-index: 99;
+  color: #fff;
+}
+
+.books-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  border: 1px solid greenyellow;
+}
+
+.book-div {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  column-gap: 10px;
+  background-color: black;
+  color: white;
+  padding: 12px;
+  align-items: center;
+  border-radius: 8px;
+}
+
+button {
+  padding: 3px;
+  border: 0.6px solid grey;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px auto;
+  gap: 20px;
+}
+
+.form-container input {
+  width: 50%;
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.form-container input::placeholder {
+  font-size: 20px;
+}
+
+.form-container button {
+  width: 10%;
+  height: 60px;
+  font-size: 20px;
+  background-color: greenyellow;
+  cursor: pointer;
+}

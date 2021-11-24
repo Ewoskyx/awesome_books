@@ -1,65 +1,57 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Awesome Books Project
 
-> One paragraph statement about the project.
+> Awesome Books project. A demo webapp for storing books
 
-![screenshot](./app_screenshot.png)
 
 Additional description about the project and its features.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML5 
+- CSS3
+- Javascript
+
+
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+You can check the link below for the live demo.
+https://ewoskyx.github.io/awesome_books/
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
 ### Setup
+- Simply clone the project (for more information please check the link https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+- Run the cmd promt
+- Type "npm install" for the dependencies
 
 ### Install
 
-### Usage
-
-### Run tests
-
-### Deployment
+Not required
 
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Evren Ersoy**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [https://github.com/Ewoskyx]
+- Twitter: [https://twitter.com/Ewoskyx]
+- LinkedIn: [https://www.linkedin.com/in/evren-ersoy-206510179/]
 
-👤 **Author2**
+👤 **Brahim Didi**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [https://github.com/brahimdidi]
 
-## 🤝 Contributing
+👤 **Ahmed Reda**
 
-Contributions, issues, and feature requests are welcome!
+- GitHub: [https://github.com/ReAliens]
 
-Feel free to check the [issues page](../../issues/).
 
 ## Show your support
 
@@ -67,10 +59,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+-N/A
 
 ## 📝 License
-
 This project is [MIT](./MIT.md) licensed.
