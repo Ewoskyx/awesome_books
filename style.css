@@ -164,13 +164,18 @@ h2 {
   text-align: center;
 }
 
+.footer span {
+  color: #fff;
+  font-size: 0.9em;
+}
+
 .contactinfo-section p span {
   color: rgb(199, 67, 67);
   font-size: 22px;
 }
 
 #booklistsection {
-  padding-bottom: 50px ;
+  padding-bottom: 50px;
 }
 
 .footer {
@@ -183,10 +188,4 @@ h2 {
   height: 5vh;
   background-color: rgb(37, 35, 35);
   padding: 12px;
-  
-}
-.footer span {
-  color: #fff;
-  font-size: .9em;
-  
 }
