@@ -92,31 +92,38 @@ button {
   justify-content: space-around;
   align-items: center;
 }
+
 .title1 {
   font-size: 30px;
   color: rgb(151, 93, 93);
 }
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
   width: 40%;
 }
+
 .nav-bar-li {
-  color: rgb(116, 113, 110);
-  font-size: 17px;
+  color: rgb(116, 150, 220);
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
   padding: 8px;
   border-radius: 13px;
 }
+
 h2 {
   display: block;
   align-items: center;
   margin: 0 auto;
   padding: 10px;
 }
+
 .dis-none {
-  display: none!important;
+  display: none !important;
 }
+
 .title2 {
   margin-top: 20px;
   display: flex;
@@ -124,9 +131,25 @@ h2 {
   font-size: 29px;
   font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 }
+
 .contactinfo-section {
   display: flex;
+  flex-direction: column;
 }
+
+.time {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.time span {
+  font-size: 24px;
+  line-height: 40px;
+  color: white;
+}
+
 .contactinfo-section p {
   width: 50%;
   justify-content: center;
@@ -140,6 +163,7 @@ h2 {
   margin-top: 30px;
   text-align: center;
 }
+
 .contactinfo-section p span {
   color: rgb(199, 67, 67);
   font-size: 22px;
