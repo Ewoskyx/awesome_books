@@ -5,20 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <title>Awesome Books</title>
   </head>
   <body>
-    <header>
+    <header class="header" id="header">
       <div class="header-top">
         <h1 class="title1">Awesome Books</h1>
       </div>
+      <ul class="nav-bar">
+        <li class="nav-bar-li" id="booklist">Book List</li>
+        <li class="nav-bar-li" id="addbook">Add book</li>
+        <li class="nav-bar-li" id="contactinfo">Contact info</li>
+      </ul>
     </header>
-    <section>
-      <h2>Selected Books</h2>
+    <div class="time"></div>
+    <section class="dis-none contactinfo-section">
+      <h2>Contact Info</h2>
+      <p>
+        <span> Authors</span>: Ersoy,Reda,Didi,<br />
+        <span> Organisation</span>: microverse,<br />
+        <span> Website</span> :microverse.org, <br />
+        All rights reserved
+      </p>
+    </section>
+    <section class="dis-none" id="booklistsection">
+      <h2 class="title2">Your book list</h2>
       <div class="books-wrapper" id="books-wrapper"></div>
     </section>
     <section class="input-wrapper">
-      <h2>Insert Books</h2>
+      <h2>Insert Book</h2>
       <form id="formContainer" class="form-container">
         <input
           type="text"
@@ -34,9 +50,14 @@
           name="author"
           maxlength="30"
         />
-        <button type="submit" id="add-btn">Add</button>
+        <div class="button-container">
+          <button type="submit" id="add-btn">Add</button>
+        </div>
       </form>
     </section>
+    <footer class="footer">
+      <span>Copyright</span>
+    </footer>
     <script src="./app.js"></script>
   </body>
 </html>

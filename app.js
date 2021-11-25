@@ -90,3 +90,54 @@ document.querySelector('.books-wrapper').addEventListener('click', (e) => {
   Book.deleteBook(e.target);
   Book.removeBooks(e.target.id);
 });
+
+const booklistBtn = document.getElementById('booklist');
+const addbookBtn = document.getElementById('addbook');
+const contactinfoBtn = document.getElementById('contactinfo');
+const booklistSection = document.getElementById('booklistsection');
+const inputSection = document.querySelector('.input-wrapper');
+const contactinfoSection = document.querySelector('.contactinfo-section');
+const booklistOpen = () => {
+  booklistSection.classList.remove('dis-none');
+  inputSection.classList.add('dis-none');
+  booklistBtn.style.backgroundColor = 'white';
+  contactinfoBtn.style.backgroundColor = 'unset';
+  addbookBtn.style.backgroundColor = 'unset';
+  contactinfoSection.classList.add('dis-none');
+};
+const addbookOpen = () => {
+  booklistSection.classList.add('dis-none');
+  inputSection.classList.remove('dis-none');
+  booklistBtn.style.backgroundColor = 'unset';
+  contactinfoBtn.style.backgroundColor = 'unset';
+  addbookBtn.style.backgroundColor = 'white';
+  contactinfoSection.classList.add('dis-none');
+};
+const contactinfoOpen = () => {
+  booklistSection.classList.add('dis-none');
+  inputSection.classList.add('dis-none');
+  booklistBtn.style.backgroundColor = 'unset';
+  contactinfoBtn.style.backgroundColor = 'white';
+  addbookBtn.style.backgroundColor = 'unset';
+  contactinfoSection.classList.remove('dis-none');
+};
+booklistBtn.addEventListener('click', booklistOpen);
+addbookBtn.addEventListener('click', addbookOpen);
+contactinfoBtn.addEventListener('click', contactinfoOpen);
+
+/* global luxon, luxon */
+const displayTime = () => {
+  const currentDate = luxon.DateTime.fromJSDate(new Date());
+  const date = currentDate.toLocaleString(
+    luxon.DateTime.DATETIME_MED_WITH_SECONDS,
+  );
+  document.querySelector('.time').innerHTML = date;
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  luxon.Settings.defaultLocale = 'en';
+  displayTime();
+  setInterval(() => {
+    displayTime();
+  }, 1000);
+});
